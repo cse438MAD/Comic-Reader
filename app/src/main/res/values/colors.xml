@@ -5,4 +5,6 @@
     <color name="colorAccent">#D81B60</color>
     <color name="columnColor">#F44A3E</color>
     <color name="textColor">#FEFEFE</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorLightGray">#E2E2E2</color>
 </resources>
