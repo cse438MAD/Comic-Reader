@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">ComicReader</string>
     <string name="upload">Upload</string>
+    <string name="new_chapter">New Chapter</string>
 </resources>

@@ -11,6 +11,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.helper.ItemTouchHelper
 import android.text.TextUtils
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -36,6 +37,8 @@ class AddChapterActivity : AppCompatActivity() {
     private var _chapterTitle: String? = null
     private var imageList: MutableList<Uri> = ArrayList()
     private var adapter = ImageListAdapter()
+    private var upload = false
+    private var cover = false
 
 
     private val imageRequest = 71
@@ -46,14 +49,39 @@ class AddChapterActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_add_chapter)
 
-        _title = intent!!.extras!!.getString("Title")
+        if (intent!!.extras!!.containsKey("Title")) {
+            _title = intent!!.extras!!.getString("Title")
+        } else {
+            _title = intent!!.extras!!.getString("Cover")
+            chapter_title.visibility = View.INVISIBLE
+            cover = true
+        }
+
         storage = FirebaseStorage.getInstance()
         storageReference = storage!!.reference
         fab.setOnClickListener { chooseImage() }
-        button.setOnClickListener {
+        button_upload.setOnClickListener {
             for (image in imageList) {
                 uploadImage(image)
             }
+        }
+        button_done.setOnClickListener {
+            val intent = Intent(this, UploadComicActivity::class.java)
+            if (upload) {
+                if(cover){
+                    intent.putExtra("COVER", "cover")
+                    setResult(RESULT_OK, intent)
+                    finish()
+                    }
+                _chapterTitle = chapter_title.text.toString()
+                intent.putExtra("CHAPTER", _chapterTitle)
+                Log.e("Add Chapter", _chapterTitle)
+                setResult(RESULT_OK, intent)
+                finish()
+            }
+
+            setResult(Activity.RESULT_CANCELED, intent)
+            finish()
         }
 
         val touchHelper = ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(
@@ -97,9 +125,11 @@ class AddChapterActivity : AppCompatActivity() {
         }
     }
 
+
     private fun uploadImage(filePath: Uri) {
 
         validateForm()
+        upload = true
 
         val progressDialog = ProgressDialog(this)
         progressDialog.setTitle("Uploading...")

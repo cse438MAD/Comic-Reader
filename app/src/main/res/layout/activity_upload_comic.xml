@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout
+        android:id="@+id/upload_comic_layout"
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto">
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <EditText
             android:id="@+id/title_field"
@@ -22,26 +24,53 @@
             app:layout_constraintTop_toBottomOf="@+id/title_field"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"/>
+    <Button
+            android:id="@+id/cover"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/author_field"
+            android:layout_marginTop="16dp"
+            android:text="Add Cover"
+            android:textSize="16sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:backgroundTint="@color/colorLightGray"
+            android:textAllCaps="false"/>
+
+
+
     <TextView
             android:id="@+id/chapter"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/author_field"
+            app:layout_constraintTop_toBottomOf="@+id/cover"
             android:text="Chapters"
             android:textSize="24sp"
             android:textColor="@color/colorBlack"
+            android:layout_marginTop="16dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"/>
 
-    <Button
-            android:id="@+id/b_add_chapter"
+    <LinearLayout
+            android:id="@+id/wrapper"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/chapter"
+            android:layout_height="600dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="12dp"
+            android:orientation="vertical"
+            app:layout_constraintTop_toBottomOf="@id/chapter"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            android:background="@drawable/ic_add_black_24dp"
-            android:backgroundTint="@color/colorLightGray"/>
+            app:layout_constraintRight_toRightOf="parent">
+
+        <android.support.v7.widget.RecyclerView
+                android:id="@+id/button_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="parent"
+        />
+
+    </LinearLayout>
 
 
 </android.support.constraint.ConstraintLayout>
