@@ -20,15 +20,20 @@
         <activity
                 android:name=".SplashActivity"
                 android:theme="@style/SplashTheme"/>
-        <activity android:name=".UserUploadedComicActivity"/>
-        <activity android:name=".AddChapterActivity"/>
-        <activity android:name=".UploadComicActivity">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN"/>
 
-            <category android:name="android.intent.category.LAUNCHER"/>
-        </intent-filter>
-    </activity>
+        <activity android:name=".AddChapterActivity">
+        </activity>
+        <activity android:name=".UploadComicActivity">
+        </activity>
+        <activity android:name=".LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".RegisterActivity"/>
+
     </application>
 
 </manifest>

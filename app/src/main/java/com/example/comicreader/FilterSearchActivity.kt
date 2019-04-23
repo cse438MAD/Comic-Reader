@@ -1,6 +1,7 @@
 package com.example.comicreader
 
 import android.content.DialogInterface
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.chip.Chip
@@ -35,6 +36,7 @@ class FilterSearchActivity : AppCompatActivity() {
 
                 R.id.action_filter -> showOptionsDialog()
                 R.id.action_search -> showSearchDialog()
+                R.id.action_add -> startActivity( Intent(this@FilterSearchActivity, UploadComicActivity::class.java))
             }
             true
 

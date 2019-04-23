@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
 import android.support.v7.widget.GridLayoutManager
+import android.view.MenuItem
 import android.widget.Toast
 import com.example.comicreader.Adapter.MyComicAdapter
 import com.example.comicreader.Adapter.MySliderAdapter
@@ -91,6 +92,7 @@ class MainActivity : AppCompatActivity(), IBannerLoadDoneListener, IComicLoadDon
         btn_show_filter_search.setOnClickListener {
             startActivity(Intent(this@MainActivity,FilterSearchActivity::class.java))
         }
+
 
     }
 
